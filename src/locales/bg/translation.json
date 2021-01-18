@@ -1,0 +1,37 @@
+{
+    "login": "Вход",
+    "signup": "Регистрация",
+    "register": "Регистрация",
+    "or": "или",
+    "newProduct": "Нов Продукт",
+    "addProduct": "Добави Продукт",
+    "formPlaceholders": {
+        "email": "Имейл...",
+        "password": "Парола...",
+        "rePassword": "Повтори Парола...",
+        "name": "Име...",
+        "description": "Описание..."
+    },
+    "formErrors": {
+        "rePassword": "Паролите не съвпадат",
+        "cannotBeEmpty": "Не може да бъде празно"
+    },
+    "mixProducts": " Смеси Продукти",
+    "createMix": "Създай Смес",
+    "home": "Начало",
+    "myMixResults": "Моите Резултати",
+    "language": "Език",
+    "logout": "Изход",
+    "demo": "Демо",
+    "bg": "БГ",
+    "products": "Продукти",
+    "selectedProducts": "Избрани Продукти",
+    "mostRecentResults": "Най-нови Резултати",
+    "mixResult": "Резултат",
+    "and": "и",
+    "mixOf": "Смес от",
+    "date": "на {{date, DD/MM/YYYY}} в {{date, HH:MM:SS}}",
+    "qrCodeScanner": "QR Сканиране",
+    "temp": "Температура: ",
+    "addPhoto": "Качи Снимка"
+}

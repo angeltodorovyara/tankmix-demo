@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.center-middle-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}

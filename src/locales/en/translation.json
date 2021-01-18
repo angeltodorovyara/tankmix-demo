@@ -1,0 +1,37 @@
+{
+    "login": "Login",
+    "signup": "Sign Up",
+    "register": "Register",
+    "or": "or",
+    "newProduct": "New Product",
+    "addProduct": "Add Product",
+    "formPlaceholders": {
+        "email": "Email...",
+        "password": "Password...",
+        "rePassword": "Repeat Password...",
+        "name": "Name...",
+        "description": "Description..."
+    },
+    "formErrors": {
+        "rePassword": "Passwords doesn't match",
+        "cannotBeEmpty": "Cannot be empty"
+    },
+    "mixProducts": "Mix Products",
+    "createMix": "Create Mix",
+    "home": "Home",
+    "myMixResults": "My Mix Results",
+    "language": "Language",
+    "logout": "Log Out",
+    "demo": "Demo",
+    "bg": "BG",
+    "products": "Products",
+    "selectedProducts": "Selected Products",
+    "mostRecentResults": "Your Most Recent Results",
+    "mixResult": "Mix Result",
+    "and": "and",
+    "mixOf": "Mix of",
+    "date": "on {{date, MM/DD/YYYY}} at {{date, HH:MM:SS}}",
+    "qrCodeScanner": "QR Code Scanner",
+    "temp": "Temperature: ",
+    "addPhoto": "Upload Image"
+}
