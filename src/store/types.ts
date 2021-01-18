@@ -5,6 +5,7 @@ export interface RootState {
     products: ProductsState;
     result: ResultState;
     geolocation: Geolocation;
+    admin: AdminState;
 };
 
 export interface UserState {
@@ -30,4 +31,9 @@ export interface ResultState {
 export interface Geolocation {
     location: string | null;
     weather: string | null;
+}
+
+export interface AdminState {
+    allProducts: Product[];
+    allUsers: User[];
 }

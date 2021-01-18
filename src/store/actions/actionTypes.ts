@@ -108,4 +108,15 @@ interface GeolocationFailedAction {
     type: typeof GEOLOCATION_FAILED;
 }
 
-export type GeolocationActionTypes = GeolocationSuccessAction | GeolocationFailedAction
+export type GeolocationActionTypes = GeolocationSuccessAction | GeolocationFailedAction;
+
+// Admin
+
+export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS"
+
+interface GetAllUsersSuccessAction {
+    type: typeof GET_ALL_USERS_SUCCESS;
+    data: User[];
+}
+
+export type GetAllUsersActionTypes = GetAllUsersSuccessAction;
