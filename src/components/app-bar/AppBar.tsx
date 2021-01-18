@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         appBar: {
             backgroundColor: "#00205b",
-            position: 'absolute',
             zIndex: theme.zIndex.drawer + 1
         },
         menuButton: {
