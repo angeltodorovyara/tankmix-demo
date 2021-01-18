@@ -14,10 +14,10 @@
     "cordova_script": "0.0.2",
     "cordova-android": "^9.0.0",
     "cordova-browser": "^6.0.0",
-    "cordova-ios": "^5.1.1",
+    "cordova-ios": "^6.1.1",
     "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-add-swift-support": "^2.0.2",
-    "cordova-plugin-camera": "^4.1.0",
+    "cordova-plugin-camera": "^5.0.1",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-geolocation": "^4.1.0",
     "cordova-plugin-local-notifications-appstr": "^0.9.6",
@@ -82,7 +82,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.15",
-    "@types/react-router-dom": "^5.1.6",
+    "@types/react-router-dom": "^5.1.7",
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-local-notification": "^0.9.0-beta.2"
@@ -94,11 +94,9 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-camera": {
-        "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      },
       "cordova-plugin-dialogs": {},
-      "cordova-plugin-actionsheet": {}
+      "cordova-plugin-actionsheet": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "browser",
