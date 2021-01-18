@@ -82,6 +82,8 @@ const AppBarComponent: React.FC = props => {
                     <List>
                         <ListItem content={t('home')} onClick={() => history.replace('/home')} />
                         <ListItem content={t('myMixResults')} onClick={() => history.replace('/user-mix-results')} />
+                        <ListItem content={t('allusers')} onClick={() => history.replace('/all-users')} />
+                        <ListItem content={t('allproducts')} onClick={() => history.replace('/all-products')} />
                         <ListItemOriginal>
                             <ListItemText primary={t('language')} />
                             <ListItemSecondaryAction>

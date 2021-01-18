@@ -33,5 +33,7 @@
     "date": "на {{date, DD/MM/YYYY}} в {{date, HH:MM:SS}}",
     "qrCodeScanner": "QR Сканиране",
     "temp": "Температура: ",
-    "addPhoto": "Качи Снимка"
+    "addPhoto": "Качи Снимка",
+    "allusers": "Потребители",
+    "allproducts": "Продукти"
 }

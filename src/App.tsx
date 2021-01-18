@@ -13,6 +13,8 @@ import MixPorductsPage from './pages/mix-products-page/MixProductsPage'
 import MixResultPage from './pages/mix-result-page/MixResultPage'
 import AddProductPage from './pages/add-product-page/AddProductPage'
 import UserResultPage from './pages/user-results-page/UserResultsPage'
+import AllUsersPage from './pages/all-users-page/AllUsersPage'
+import AllProductsPage from './pages/all-products-page/AllProductsPage'
 
 const App: React.FC = () => {
   const authSelected = (state: RootState) => state.auth
@@ -45,6 +47,12 @@ const App: React.FC = () => {
     </Route>
     <Route path="/user-mix-results">
       {user.data === null ? <Redirect to='/login' /> : <UserResultPage />}
+    </Route>
+    <Route path="/all-users">
+      {user.data === null ? <Redirect to='/login' /> : <AllUsersPage />}
+    </Route>
+    <Route path="/all-products">
+      {user.data === null ? <Redirect to='/login' /> : <AllProductsPage />}
     </Route>
   </Switch>
 }

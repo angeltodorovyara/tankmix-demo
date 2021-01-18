@@ -33,5 +33,7 @@
     "date": "on {{date, MM/DD/YYYY}} at {{date, HH:MM:SS}}",
     "qrCodeScanner": "QR Code Scanner",
     "temp": "Temperature: ",
-    "addPhoto": "Upload Image"
+    "addPhoto": "Upload Image",
+    "allusers": "All Users",
+    "allproducts": "All Products"
 }
