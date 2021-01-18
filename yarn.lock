@@ -3935,12 +3935,10 @@
   "resolved" "https://registry.npmjs.org/cordova-plugin-local-notifications-appstr/-/cordova-plugin-local-notifications-appstr-0.9.6.tgz"
   "version" "0.9.6"
 
-"cordova-plugin-qrscanner@github:markterrill/cordova-plugin-qrscanner":
-  "resolved" "git+ssh://git@github.com/markterrill/cordova-plugin-qrscanner.git#23b5e56d6a65db447f72ea800519a59c50f99593"
-  "version" "3.0.1"
-  dependencies:
-    "qrcode-reader" "^1.0.4"
-    "webrtc-adapter" "^3.1.4"
+"cordova-plugin-qr-barcode-scanner@^8.0.3":
+  "integrity" "sha512-K1AxfEvKr0N3PsVI7+XwkbaxFzAODRkLpvr6lwOBJc26ePgJOfaLfhUnPT+kmccPVyUQ5VIRzzEoPMKuBvbqxQ=="
+  "resolved" "https://registry.npmjs.org/cordova-plugin-qr-barcode-scanner/-/cordova-plugin-qr-barcode-scanner-8.0.3.tgz"
+  "version" "8.0.3"
 
 "cordova-plugin-statusbar@^2.4.3":
   "integrity" "sha512-ThmXzl6QIKWFXf4wWw7Q/zpB+VKkz3VM958+5A0sXD4jmR++u7KnGttLksXshVwWr6lvGwUebLYtIyXwS4Ovcg=="
@@ -9946,11 +9944,6 @@
   "resolved" "https://registry.npmjs.org/q/-/q-1.5.1.tgz"
   "version" "1.5.1"
 
-"qrcode-reader@^1.0.4":
-  "integrity" "sha512-rRjALGNh9zVqvweg1j5OKIQKNsw3bLC+7qwlnead5K/9cb1cEIAGkwikt/09U0K+2IDWGD9CC6SP7tHAjUeqvQ=="
-  "resolved" "https://registry.npmjs.org/qrcode-reader/-/qrcode-reader-1.0.4.tgz"
-  "version" "1.0.4"
-
 "qs@~6.5.2":
   "integrity" "sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.5.2.tgz"
@@ -10872,11 +10865,6 @@
     "@types/json-schema" "^7.0.6"
     "ajv" "^6.12.5"
     "ajv-keywords" "^3.5.2"
-
-"sdp@^1.5.0":
-  "integrity" "sha1-jgOPbdsUvXZa4fS1IW4SCUUR4NA="
-  "resolved" "https://registry.npmjs.org/sdp/-/sdp-1.5.4.tgz"
-  "version" "1.5.4"
 
 "select-hose@^2.0.0":
   "integrity" "sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo="
@@ -12574,13 +12562,6 @@
     "terser-webpack-plugin" "^1.4.3"
     "watchpack" "^1.7.4"
     "webpack-sources" "^1.4.1"
-
-"webrtc-adapter@^3.1.4":
-  "integrity" "sha1-tjYGLu6abvFYrNDYUBtnhDS1bxY="
-  "resolved" "https://registry.npmjs.org/webrtc-adapter/-/webrtc-adapter-3.4.3.tgz"
-  "version" "3.4.3"
-  dependencies:
-    "sdp" "^1.5.0"
 
 "websocket-driver@>=0.5.1", "websocket-driver@0.6.5":
   "integrity" "sha1-XLJVbOuF9Dc8bYI4qmkchFThOjY="

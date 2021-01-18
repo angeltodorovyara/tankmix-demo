@@ -11,6 +11,10 @@ import { getLocationWeather, logout } from '../../store/actions'
 import { RootState } from '../../store/types'
 import UserInfo from '../user-info/UserInfo'
 import WeatherInfo from '../weather-info/WeatherInfo'
+import { qrScanningOptions as options } from '../../utils/options'
+
+declare let cordova: any;
+declare let navigator: any;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -90,7 +94,15 @@ const AppBarComponent: React.FC = props => {
                             </ListItemSecondaryAction>
                         </ListItemOriginal>
                         <Divider />
-                        <ListItem content={t('qrCodeScanner')} onClick={() => console.log('gg')} />
+                        <ListItem content={t('qrCodeScanner')} onClick={() => cordova.plugins.barcodeScanner.scan(
+                            (result: any) => {
+                                navigator.notification.alert(result.text)
+                            },
+                            (error: any) => {
+                                alert("Scanning failed: " + error);
+                            },
+                            options
+                        )} />
                         <ListItem content={t('logout')} onClick={() => dispatch(logout())} />
                     </List>
                 </div>
