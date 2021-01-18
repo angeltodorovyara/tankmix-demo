@@ -12,9 +12,6 @@
     "@types/lodash": "^4.14.166",
     "compare-func": "^2.0.0",
     "cordova_script": "0.0.2",
-    "cordova-android": "^9.0.0",
-    "cordova-browser": "^6.0.0",
-    "cordova-ios": "^6.1.1",
     "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-camera": "^5.0.1",
@@ -28,7 +25,6 @@
     "i18next": "^19.8.4",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.21",
-    "i18next-xhr-backend": "^3.2.2",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "react": "^17.0.1",
@@ -83,6 +79,9 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.15",
     "@types/react-router-dom": "^5.1.7",
+    "cordova-android": "^9.0.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-ios": "^6.1.1",
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-local-notification": "^0.9.0-beta.2"
@@ -99,9 +98,7 @@
       "cordova-plugin-camera": {}
     },
     "platforms": [
-      "browser",
-      "android",
-      "ios"
+      "browser"
     ]
   }
 }

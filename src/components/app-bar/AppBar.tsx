@@ -91,7 +91,7 @@ const AppBarComponent: React.FC = props => {
                             </ListItemSecondaryAction>
                         </ListItemOriginal>
                         <Divider />
-                        <ListItem content={t('qrCodeScanner')} onClick={() => console.log('QR')} />
+                        <ListItem content={t('qrCodeScanner')} onClick={() => console.log('gg')} />
                         <ListItem content={t('logout')} onClick={() => dispatch(logout())} />
                     </List>
                 </div>
