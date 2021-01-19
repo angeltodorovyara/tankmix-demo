@@ -16,3 +16,7 @@ export {
 export {
     getLocationWeather
 } from './geolocation'
+export {
+    getAllUsers,
+    updateUser
+} from './admin'

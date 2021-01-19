@@ -1,7 +1,7 @@
 export interface User {
     email: string;
     password: string;
-    isAdmin: number;
+    isAdmin: boolean;
 };
 
 export interface Product {

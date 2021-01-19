@@ -20,7 +20,7 @@ const HomePage: React.FC = props => {
                 onClick={() => history.push('/mix-products')}
             >{t('mixProducts')}</Button>
         </div>
-        {user.data?.isAdmin === 1 ? <TooltipAdd /> : null}
+        {user.data?.isAdmin ? <TooltipAdd /> : null}
     </PageLayout >
 }
 

@@ -55,6 +55,7 @@ const AppBarComponent: React.FC = props => {
     const history = useHistory()
     const { t, i18n } = useTranslation();
     const geolocation = useSelector((state: RootState) => state.geolocation)
+    const user = useSelector((state: RootState) => state.auth.data)
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [update, setUpdate] = useState<boolean>(false)
 
@@ -86,8 +87,8 @@ const AppBarComponent: React.FC = props => {
                     <List>
                         <ListItem content={t('home')} onClick={() => history.replace('/home')} />
                         <ListItem content={t('myMixResults')} onClick={() => history.replace('/user-mix-results')} />
-                        <ListItem content={t('allusers')} onClick={() => history.replace('/all-users')} />
-                        <ListItem content={t('allproducts')} onClick={() => history.replace('/all-products')} />
+                        {user?.isAdmin ? <ListItem content={t('allusers')} onClick={() => history.replace('/all-users')} /> : null}
+                        {user?.isAdmin ? <ListItem content={t('allproducts')} onClick={() => history.replace('/all-products')} /> : null}
                         <ListItemOriginal>
                             <ListItemText primary={t('language')} />
                             <ListItemSecondaryAction>
