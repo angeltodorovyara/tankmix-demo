@@ -35,5 +35,7 @@
     "temp": "Температура: ",
     "addPhoto": "Качи Снимка",
     "allusers": "Потребители",
-    "allproducts": "Продукти"
+    "allproducts": "Продукти",
+    "isAdmin": "Админ",
+    "deactivate": "Изтрий Акаунт"
 }
