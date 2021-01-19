@@ -1,4 +1,4 @@
-import { GetAllUsersActionTypes, GET_ALL_USERS_SUCCESS } from "../actions/actionTypes"
+import { CLEAN_ADMIN_STATE, GetAllUsersActionTypes, GET_ALL_USERS_SUCCESS } from "../actions/actionTypes"
 import { AdminState } from "../types"
 
 const initialState: AdminState = {
@@ -12,6 +12,10 @@ const reducer = (state = initialState, action: GetAllUsersActionTypes) => {
             return {
                 ...state,
                 allUsers: [...action.data]
+            }
+        case CLEAN_ADMIN_STATE:
+            return {
+                ...initialState
             }
         default:
             return state

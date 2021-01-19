@@ -1,6 +1,7 @@
 export {
     registerUser,
     authenticate,
+    deactivateYourself,
     logout,
     initialAuthCheckAndSetup
 } from './auth'

@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import List from '../../components/list/List'
 import LanguageButton from '../buttons/LanguageButton'
 import ListItem from '../../components/list/list-item/ListItem'
-import { getLocationWeather, logout } from '../../store/actions'
+import { getLocationWeather, logout, deactivateYourself } from '../../store/actions'
 import { RootState } from '../../store/types'
 import UserInfo from '../user-info/UserInfo'
 import WeatherInfo from '../weather-info/WeatherInfo'
@@ -107,7 +107,7 @@ const AppBarComponent: React.FC = props => {
                             options
                         )} />
                         <ListItem content={t('logout')} onClick={() => dispatch(logout())} />
-                        <ListItem content={t('deactivate')} onClick={() => console.log('Deactivate')} />
+                        <ListItem content={t('deactivate')} onClick={() => dispatch(deactivateYourself(user?.email!))} />
                     </List>
                 </div>
             </Drawer>

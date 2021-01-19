@@ -113,10 +113,15 @@ export type GeolocationActionTypes = GeolocationSuccessAction | GeolocationFaile
 // Admin
 
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS"
+export const CLEAN_ADMIN_STATE = "CLEAN_ADMIN_STATE"
 
 interface GetAllUsersSuccessAction {
     type: typeof GET_ALL_USERS_SUCCESS;
     data: User[];
 }
 
-export type GetAllUsersActionTypes = GetAllUsersSuccessAction;
+interface CleanAdminStateAction {
+    type: typeof CLEAN_ADMIN_STATE
+}
+
+export type GetAllUsersActionTypes = GetAllUsersSuccessAction | CleanAdminStateAction;
