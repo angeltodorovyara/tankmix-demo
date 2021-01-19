@@ -14,7 +14,7 @@ export const registerUser = (email: string, password: string) => {
             tx.executeSql('INSERT INTO users VALUES(?1, ?2, ?3)', [email, password, isAdmin], function (tx: any, rs: any) {
                 localStorage.setItem('email', email)
                 localStorage.setItem('password', password)
-                dispatch(authSuccess({ email, password, isAdmin }, []))
+                dispatch(authSuccess({ email, password, isAdmin: Boolean(isAdmin) }, []))
             }, function (tx: any, error: any) {
                 dispatch(authFailed(error.message))
                 console.log('SELECT error: ' + error.message)
@@ -30,7 +30,8 @@ export const authenticate = (email: string, password: string) => {
         window.db.transaction(function (tx: any) {
             tx.executeSql('SELECT * FROM users WHERE email = ?1 AND password = ?2', [email, password], function (tx: any, rs: any) {
                 if (rs.rows.length === 1) {
-                    const user = { ...rs.rows.item(0) }
+                    const user: User = { ...rs.rows.item(0) }
+                    user.isAdmin = Boolean(user.isAdmin)
                     localStorage.setItem('email', user.email)
                     localStorage.setItem('password', user.password)
                     window.db.transaction(function (tx: any) {

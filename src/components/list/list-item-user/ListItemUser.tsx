@@ -20,7 +20,7 @@ const ListItemUser: React.FC<ComponentProps> = (props) => {
         <ListItemSecondaryAction>
             <FormControlLabel
                 control={<Switch
-                    checked={props.data.isAdmin === 1 ? true : false}
+                    checked={props.data.isAdmin ? true : false}
                     color="default"
                     onChange={e => onChangeHandler(e)}
                 />}
