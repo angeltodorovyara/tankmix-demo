@@ -35,5 +35,7 @@
     "temp": "Temperature: ",
     "addPhoto": "Upload Image",
     "allusers": "All Users",
-    "allproducts": "All Products"
+    "allproducts": "All Products",
+    "isAdmin": "Admin",
+    "deactivate": "Deactivate"
 }

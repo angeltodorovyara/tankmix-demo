@@ -107,6 +107,7 @@ const AppBarComponent: React.FC = props => {
                             options
                         )} />
                         <ListItem content={t('logout')} onClick={() => dispatch(logout())} />
+                        <ListItem content={t('deactivate')} onClick={() => console.log('Deactivate')} />
                     </List>
                 </div>
             </Drawer>

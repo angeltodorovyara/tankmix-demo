@@ -117,7 +117,6 @@ const authFailed = (err: string) => {
 export const logout = () => {
     localStorage.removeItem('email')
     localStorage.removeItem('password')
-    localStorage.removeItem('isAdmin')
     return (dispatch: any) => {
         dispatch(actionLogout())
     }

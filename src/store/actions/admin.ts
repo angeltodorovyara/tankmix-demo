@@ -9,7 +9,9 @@ export const getAllUsers = () => {
             tx.executeSql('SELECT * FROM users', [], function (tx: any, rs: any) {
                 const resultArray: User[] = [];
                 for (let i = 0; i < rs.rows.length; i++) {
-                    resultArray.push({ ...rs.rows.item(i) });
+                    const user: User = { ...rs.rows.item(i) }
+                    user.isAdmin = Boolean(user.isAdmin)
+                    resultArray.push({ ...user });
                 }
                 dispatch(getAllUsersSuccess(resultArray));
             }, function (tx: any, error: any) {
