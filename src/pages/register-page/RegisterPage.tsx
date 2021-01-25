@@ -8,6 +8,7 @@ import { RootState } from '../../store/types'
 import { InputValues } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
 import PageLayout from '../PageLayout'
+import ErrorMessage from '../../components/error-message/ErrorMessage'
 
 const RegisterPage: React.FC = (props) => {
     const user = useSelector((state: RootState) => state.auth)
@@ -49,6 +50,7 @@ const RegisterPage: React.FC = (props) => {
 
     return <PageLayout>
         <div className="center-middle-screen">
+            {user.error ? <ErrorMessage message={user.error} /> : null}
             <Typography variant="h5" align="center" gutterBottom>{t('signup')}</Typography>
             <form onSubmit={onSubmitHandler}>
                 <TextField

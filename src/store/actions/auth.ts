@@ -61,33 +61,31 @@ export const initialAuthCheckAndSetup = () => {
     return (dispatch: any) => {
         const email = localStorage.getItem('email');
         const password = localStorage.getItem('password');
-        setTimeout(() => {
-            dispatch(authStart())
-            dispatch(getAllProducts())
-            window.db.transaction(function (tx: any) {
-                tx.executeSql('SELECT * FROM users WHERE email = ?1 AND password = ?2 AND isDeactivated = ?3', [email, password, 0], function (tx: any, rs: any) {
-                    if (rs.rows.length === 1) {
-                        const user = { ...rs.rows.item(0) }
-                        localStorage.setItem('email', user.email)
-                        localStorage.setItem('password', user.password)
-                        window.db.transaction(function (tx: any) {
-                            tx.executeSql('SELECT * FROM results WHERE user_email = ?1', [user.email], (tx: any, rs: any) => {
-                                const results: MixResult[] = [];
-                                for (let i = 0; i < rs.rows.length; i++) {
-                                    results.push(rs.rows.item(i))
-                                }
-                                dispatch(authSuccess(user, results))
-                            })
+        dispatch(authStart())
+        dispatch(getAllProducts())
+        window.db.transaction(function (tx: any) {
+            tx.executeSql('SELECT * FROM users WHERE email = ?1 AND password = ?2 AND isDeactivated = ?3', [email, password, 0], function (tx: any, rs: any) {
+                if (rs.rows.length === 1) {
+                    const user = { ...rs.rows.item(0) }
+                    localStorage.setItem('email', user.email)
+                    localStorage.setItem('password', user.password)
+                    window.db.transaction(function (tx: any) {
+                        tx.executeSql('SELECT * FROM results WHERE user_email = ?1', [user.email], (tx: any, rs: any) => {
+                            const results: MixResult[] = [];
+                            for (let i = 0; i < rs.rows.length; i++) {
+                                results.push(rs.rows.item(i))
+                            }
+                            dispatch(authSuccess(user, results))
                         })
-                    } else {
-                        dispatch(logout())
-                    }
-                }, function (tx: any, error: any) {
-                    dispatch(authFailed(error.message))
-                    console.log('SELECT error: ' + error.message)
-                })
+                    })
+                } else {
+                    dispatch(logout())
+                }
+            }, function (tx: any, error: any) {
+                dispatch(authFailed(error.message))
+                console.log('SELECT error: ' + error.message)
             })
-        }, 2000);
+        })
     }
 }
 

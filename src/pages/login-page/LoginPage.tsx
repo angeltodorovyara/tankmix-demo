@@ -43,7 +43,6 @@ const LoginPage: React.FC = (props) => {
     return <PageLayout>
         <div className='center-middle-screen'>
             {user.error ? <ErrorMessage message={user.error} /> : null}
-
             <Typography variant="h5" align="center" gutterBottom>{t('login')}</Typography>
             <form onSubmit={onSubmitHandler}>
                 <TextField

@@ -1,5 +1,5 @@
 {
-  "name": "com.example.tankmixdemo",
+  "name": "com.agrooffice.demoproject",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -66,7 +66,7 @@
     ]
   },
   "homepage": "./",
-  "displayName": "tank-mix-demo",
+  "displayName": "Tank Mix Demo",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
   "keywords": [
@@ -102,7 +102,9 @@
       }
     },
     "platforms": [
-      "browser"
+      "browser",
+      "android",
+      "ios"
     ]
   }
 }
