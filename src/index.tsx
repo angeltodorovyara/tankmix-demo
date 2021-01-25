@@ -19,7 +19,6 @@ import geolocation from './store/reducers/geolocation'
 import { notificationSetup } from './utils/notificationSetup'
 
 declare let window: any;
-declare let StatusBar: any;
 window.db = null;
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -36,7 +35,6 @@ document.addEventListener('deviceready', async () => {
         location: 'default'
     })
 
-    StatusBar.hide()
     notificationSetup()
 
     window.db.transaction(function (tx: any) {

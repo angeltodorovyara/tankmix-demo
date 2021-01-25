@@ -18,7 +18,7 @@ declare let window: any;
 const AddProductPage: React.FC = props => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const products = useSelector((state: RootState) => state.products)
+    const products = useSelector((state: RootState) => state.products);
     const [productName, setProductName] = useState<InputValues>({ value: '', error: '' });
     const [productDesc, setProductDesc] = useState<InputValues>({ value: '', error: '' });
     const [image, setImage] = useState<string | null>(null);

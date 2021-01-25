@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Typography } from '@material-ui/core'
-import { Redirect } from 'react-router-dom'
 import TextField from '../../components/text-field/TextField'
 import Button from '../../components/buttons/Button'
 import LinkButton from '../../components/buttons/LinkButton'
@@ -10,13 +9,9 @@ import { authenticate } from '../../store/actions'
 import { RootState } from '../../store/types'
 import { InputValues } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
-declare let StatusBar: any;
+import PageLayout from '../PageLayout'
 
 const LoginPage: React.FC = (props) => {
-    StatusBar.show();
-    StatusBar.backgroundColorByHexString('#fff');
-    StatusBar.styleDefault();
-
     const user = useSelector((state: RootState) => state.auth)
     const dispatch = useDispatch()
     const { t } = useTranslation()
@@ -45,36 +40,34 @@ const LoginPage: React.FC = (props) => {
         }
     }
 
-    if (user.data) {
-        return <Redirect to='/home' />
-    }
+    return <PageLayout>
+        <div className='center-middle-screen'>
+            {user.error ? <ErrorMessage message={user.error} /> : null}
 
-    return <div className='center-middle-screen'>
-        {user.error ? <ErrorMessage message={user.error} /> : null}
-
-        <Typography variant="h5" align="center" gutterBottom>{t('login')}</Typography>
-        <form onSubmit={onSubmitHandler}>
-            <TextField
-                id="email"
-                type="email"
-                label={email.error}
-                value={email.value}
-                placeholder={t('formPlaceholders.email')}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler} />
-            <TextField
-                id="password"
-                type="password"
-                label={password.error}
-                value={password.value}
-                placeholder={t('formPlaceholders.password')}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler} />
-            <Button type="submit">{t('login')}</Button>
-            <Typography variant="body1" align="center" gutterBottom>{t('or')}</Typography>
-            <LinkButton to="/register">{t('signup')}</LinkButton>
-        </form>
-    </div>
+            <Typography variant="h5" align="center" gutterBottom>{t('login')}</Typography>
+            <form onSubmit={onSubmitHandler}>
+                <TextField
+                    id="email"
+                    type="email"
+                    label={email.error}
+                    value={email.value}
+                    placeholder={t('formPlaceholders.email')}
+                    onChange={onChangeHandler}
+                    onBlur={onBlurHandler} />
+                <TextField
+                    id="password"
+                    type="password"
+                    label={password.error}
+                    value={password.value}
+                    placeholder={t('formPlaceholders.password')}
+                    onChange={onChangeHandler}
+                    onBlur={onBlurHandler} />
+                <Button type="submit">{t('login')}</Button>
+                <Typography variant="body1" align="center" gutterBottom>{t('or')}</Typography>
+                <LinkButton to="/register">{t('signup')}</LinkButton>
+            </form>
+        </div>
+    </PageLayout>
 }
 
 export default LoginPage

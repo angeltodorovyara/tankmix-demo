@@ -73,9 +73,10 @@ const AppBarComponent: React.FC = props => {
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={() => setIsOpen(!isOpen)}>
-                        <MenuIcon />
-                    </IconButton>
+                    {user === null ? null :
+                        <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={() => setIsOpen(!isOpen)}>
+                            <MenuIcon />
+                        </IconButton>}
                     <Typography variant="h5" className={classes.title}>TankMix</Typography>
                     <WeatherInfo weather={geolocation.weather} />
                 </Toolbar>

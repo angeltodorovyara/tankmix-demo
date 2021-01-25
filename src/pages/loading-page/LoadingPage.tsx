@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import LoadingScreen from '../../components/loadingScreen/LoadingScreen'
 import { RootState } from "../../store/types"
 
 const LoadingPage: React.FC = (props) => {
@@ -15,7 +14,7 @@ const LoadingPage: React.FC = (props) => {
         }
     }
 
-    return <LoadingScreen />
+    return <div></div>
 }
 
 export default LoadingPage
