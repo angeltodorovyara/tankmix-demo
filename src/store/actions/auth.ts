@@ -1,5 +1,6 @@
 import { getAllProducts } from '.';
 import { MixResult, User } from '../../interfaces';
+import getUser from '../../utils/userFunction';
 import * as actionTypes from './actionTypes';
 import { adminStateCleanUp } from './admin';
 // import { getUserInformationSuccess } from './index'
@@ -32,11 +33,7 @@ export const authenticate = (email: string, password: string) => {
         window.db.transaction(function (tx: any) {
             tx.executeSql('SELECT * FROM users WHERE email = ?1 AND password = ?2 AND isDeactivated = ?3', [email, password, 0], function (tx: any, rs: any) {
                 if (rs.rows.length === 1) {
-                    const user: User = { ...rs.rows.item(0) }
-                    user.isAdmin = Boolean(user.isAdmin)
-                    user.isDeactivated = Boolean(user.isDeactivated)
-                    localStorage.setItem('email', user.email)
-                    localStorage.setItem('password', user.password)
+                    const user = getUser({ ...rs.rows.item(0) })
                     window.db.transaction(function (tx: any) {
                         tx.executeSql('SELECT * FROM results WHERE user_email = ?1', [user.email], (tx: any, rs: any) => {
                             const results: MixResult[] = [];
@@ -66,9 +63,7 @@ export const initialAuthCheckAndSetup = () => {
         window.db.transaction(function (tx: any) {
             tx.executeSql('SELECT * FROM users WHERE email = ?1 AND password = ?2 AND isDeactivated = ?3', [email, password, 0], function (tx: any, rs: any) {
                 if (rs.rows.length === 1) {
-                    const user = { ...rs.rows.item(0) }
-                    localStorage.setItem('email', user.email)
-                    localStorage.setItem('password', user.password)
+                    const user = getUser({ ...rs.rows.item(0) })
                     window.db.transaction(function (tx: any) {
                         tx.executeSql('SELECT * FROM results WHERE user_email = ?1', [user.email], (tx: any, rs: any) => {
                             const results: MixResult[] = [];

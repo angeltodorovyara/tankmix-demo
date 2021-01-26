@@ -10,6 +10,8 @@ import { RootState } from '../../store/types'
 import { InputValues } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
 import PageLayout from '../PageLayout'
+import emailValidator from '../../utils/validators/emailValidator'
+import passwordValidator from '../../utils/validators/passwordValidator'
 
 const LoginPage: React.FC = (props) => {
     const user = useSelector((state: RootState) => state.auth)
@@ -20,16 +22,18 @@ const LoginPage: React.FC = (props) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         if (e.target.id === "email")
-            setEmail(prevState => { return { ...prevState, value: e.target.value } })
+            setEmail(prevState => ({ ...prevState, value: e.target.value }))
         else if (e.target.id === "password")
-            setPassword(prevState => { return { ...prevState, value: e.target.value } })
+            setPassword(prevState => ({ ...prevState, value: e.target.value }))
     }
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        if (e.target.id === "password") {
-            // password validator
-        }
+        if (e.target.id === "email")
+            setEmail(prevState => ({ ...prevState, error: emailValidator(email.value) }))
+        else if (e.target.id === "password")
+            setPassword(prevState => ({ ...prevState, error: passwordValidator(password.value) }))
     }
+
 
     const onSubmitHandler = (e: React.FormEvent) => {
         e.preventDefault()
@@ -48,7 +52,7 @@ const LoginPage: React.FC = (props) => {
                 <TextField
                     id="email"
                     type="email"
-                    label={email.error}
+                    label={t(email.error)}
                     value={email.value}
                     placeholder={t('formPlaceholders.email')}
                     onChange={onChangeHandler}
@@ -56,7 +60,7 @@ const LoginPage: React.FC = (props) => {
                 <TextField
                     id="password"
                     type="password"
-                    label={password.error}
+                    label={t(password.error)}
                     value={password.value}
                     placeholder={t('formPlaceholders.password')}
                     onChange={onChangeHandler}

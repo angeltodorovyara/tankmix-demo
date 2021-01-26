@@ -12,10 +12,6 @@
         "name": "Name...",
         "description": "Description..."
     },
-    "formErrors": {
-        "rePassword": "Passwords doesn't match",
-        "cannotBeEmpty": "Cannot be empty"
-    },
     "mixProducts": "Mix Products",
     "createMix": "Create Mix",
     "home": "Home",
@@ -37,5 +33,13 @@
     "allusers": "All Users",
     "allproducts": "All Products",
     "isAdmin": "Admin",
-    "deactivate": "Deactivate"
+    "deactivate": "Deactivate",
+    "validations": {
+        "empty": "The field cannot be empty!",
+        "invalidEmail": "Invalid email!",
+        "shortPassword": "Password must be at least 5 characters!",
+        "longPasword": "Password is too long!",
+        "invalidPassword": "Only letters and numbers!",
+        "rePasswordError": "Passwords doesn't match!"
+    }
 }

@@ -12,10 +12,6 @@
         "name": "Име...",
         "description": "Описание..."
     },
-    "formErrors": {
-        "rePassword": "Паролите не съвпадат",
-        "cannotBeEmpty": "Не може да бъде празно"
-    },
     "mixProducts": " Смеси Продукти",
     "createMix": "Създай Смес",
     "home": "Начало",
@@ -37,5 +33,13 @@
     "allusers": "Потребители",
     "allproducts": "Продукти",
     "isAdmin": "Админ",
-    "deactivate": "Изтрий Акаунт"
+    "deactivate": "Изтрий Акаунт",
+    "validations": {
+        "empty": "Полето не може да бъде празно!",
+        "invalidEmail": "Невалиден имейл!",
+        "shortPassword": "Паролата трябва да е поне от 5 символа!",
+        "longPasword": "Паролата е прекалено дълга!",
+        "invalidPassword": "Паролата мое да съдържа само букви и числа!",
+        "rePasswordError": "Паролите не съвпадат!"
+    }
 }

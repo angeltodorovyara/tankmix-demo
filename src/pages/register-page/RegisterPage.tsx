@@ -9,6 +9,9 @@ import { InputValues } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
 import PageLayout from '../PageLayout'
 import ErrorMessage from '../../components/error-message/ErrorMessage'
+import emailValidator from '../../utils/validators/emailValidator'
+import passwordValidator from '../../utils/validators/passwordValidator'
+import rePasswordValidator from '../../utils/validators/rePasswordValidator'
 
 const RegisterPage: React.FC = (props) => {
     const user = useSelector((state: RootState) => state.auth)
@@ -20,23 +23,20 @@ const RegisterPage: React.FC = (props) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         if (e.target.id === "email")
-            setEmail(prevState => { return { ...prevState, value: e.target.value } })
+            setEmail(prevState => ({ ...prevState, value: e.target.value }))
         else if (e.target.id === "password")
-            setPassword(prevState => { return { ...prevState, value: e.target.value } })
+            setPassword(prevState => ({ ...prevState, value: e.target.value }))
         else if (e.target.id === "rePassword")
-            setRePassword(prevState => { return { ...prevState, value: e.target.value } })
+            setRePassword(prevState => ({ ...prevState, value: e.target.value }))
     }
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        if (e.target.id === "password") {
-            // password validator
-        }
-        else if (e.target.id === "rePassword") {
-            if (rePassword.value !== password.value)
-                setRePassword(prevState => { return { ...prevState, error: t('formErrors.rePassword') } })
-            else
-                setRePassword(prevState => { return { ...prevState, error: '' } })
-        }
+        if (e.target.id === "email")
+            setEmail(prevState => ({ ...prevState, error: emailValidator(email.value) }))
+        else if (e.target.id === "password")
+            setPassword(prevState => ({ ...prevState, error: passwordValidator(password.value) }))
+        else if (e.target.id === "rePassword")
+            setRePassword(prevState => ({ ...prevState, error: rePasswordValidator(password.value, rePassword.value) }))
     }
 
     const onSubmitHandler = (e: React.FormEvent) => {
@@ -56,7 +56,7 @@ const RegisterPage: React.FC = (props) => {
                 <TextField
                     id="email"
                     type="email"
-                    label={email.error}
+                    label={t(email.error)}
                     value={email.value}
                     placeholder={t('formPlaceholders.email')}
                     onChange={onChangeHandler}
@@ -64,7 +64,7 @@ const RegisterPage: React.FC = (props) => {
                 <TextField
                     id="password"
                     type="password"
-                    label={password.error}
+                    label={t(password.error)}
                     value={password.value}
                     placeholder={t('formPlaceholders.password')}
                     onChange={onChangeHandler}
@@ -72,7 +72,7 @@ const RegisterPage: React.FC = (props) => {
                 <TextField
                     id="rePassword"
                     type="password"
-                    label={rePassword.error}
+                    label={t(rePassword.error)}
                     value={rePassword.value}
                     placeholder={t('formPlaceholders.rePassword')}
                     onChange={onChangeHandler}

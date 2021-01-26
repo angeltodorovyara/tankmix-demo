@@ -10,6 +10,7 @@ import { RootState } from '../../store/types'
 import { Redirect } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { actionSheetOptions } from '../../utils/options'
+import emptyFieldValidator from '../../utils/validators/emptyFieldValidator'
 
 declare let navigator: any;
 declare let Camera: any;
@@ -24,7 +25,6 @@ const AddProductPage: React.FC = props => {
     const [image, setImage] = useState<string | null>(null);
 
     useEffect(() => {
-
         return () => {
             dispatch(createProductCleanup())
         }
@@ -75,7 +75,7 @@ const AddProductPage: React.FC = props => {
                     value={productName.value}
                     placeholder={t('formPlaceholders.name')}
                     onChange={(e) => setProductName(prevState => ({ ...prevState, value: e.target.value }))}
-                    onBlur={(e) => setProductName(prevState => ({ ...prevState, error: (e.target.value === '' ? t('formErrors.cannotBeEmpty') : '') }))} />
+                    onBlur={(e) => setProductName(prevState => ({ ...prevState, error: emptyFieldValidator(e.target.value) }))} />
                 <TextField
                     id="productDesc"
                     type="text"
@@ -84,7 +84,7 @@ const AddProductPage: React.FC = props => {
                     value={productDesc.value}
                     placeholder={t('formPlaceholders.description')}
                     onChange={(e) => setProductDesc(prevState => ({ ...prevState, value: e.target.value }))}
-                    onBlur={(e) => setProductDesc(prevState => ({ ...prevState, error: (e.target.value === '' ? t('formErrors.cannotBeEmpty') : '') }))} />
+                    onBlur={(e) => setProductDesc(prevState => ({ ...prevState, error: emptyFieldValidator(e.target.value) }))} />
                 <Button onClick={() => window.plugins.actionsheet.show(actionSheetOptions, actionSheetCallback)}>{t('addPhoto')}</Button>
                 <Button type="submit">{t('addProduct')}</Button>
             </form>
