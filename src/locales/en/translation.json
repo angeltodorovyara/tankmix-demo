@@ -41,5 +41,6 @@
         "longPasword": "Password is too long!",
         "invalidPassword": "Only letters and numbers!",
         "rePasswordError": "Passwords doesn't match!"
-    }
+    },
+    "wrongEmailPassword": "Wrong email or password!"
 }

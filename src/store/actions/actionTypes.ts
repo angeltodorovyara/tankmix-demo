@@ -4,6 +4,7 @@ export const AUTH_START = 'AUTH_START'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_FAILED = 'AUTH_FAILED'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT'
+export const AUTH_ERROR_CLEAN = 'AUTH_ERROR_CLEAN'
 
 interface AuthStartAction {
     type: typeof AUTH_START;
@@ -19,6 +20,10 @@ interface AuthSuccessAction {
     dataResults: MixResult[];
 };
 
+interface AuthErrorCleanAction {
+    type: typeof AUTH_ERROR_CLEAN;
+}
+
 interface AuthFailedAction {
     type: typeof AUTH_FAILED;
     err: string;
@@ -29,7 +34,7 @@ interface addResultToUserResultsAction {
     data: MixResult;
 }
 
-export type AuthActionTypes = AuthStartAction | AuthLogOutAction | AuthFailedAction | AuthSuccessAction | addResultToUserResultsAction
+export type AuthActionTypes = AuthStartAction | AuthLogOutAction | AuthFailedAction | AuthSuccessAction | addResultToUserResultsAction | AuthErrorCleanAction
 
 // Products
 

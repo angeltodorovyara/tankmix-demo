@@ -5,6 +5,8 @@ declare let window: any
 
 export const createProduct = (name: string, description: string, imageURL: string | null) => {
     return (dispatch: any) => {
+        name = name.trim();
+        description = description.trim();
         const product: Product = { name, description, imageURL }
         window.db.transaction(function (tx: any) {
             tx.executeSql('INSERT INTO products VALUES(?1, ?2, ?3)', [name, description, imageURL], function (tx: any, rs: any) {

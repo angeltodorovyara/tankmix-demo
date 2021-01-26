@@ -3,7 +3,8 @@ export {
     authenticate,
     deactivateYourself,
     logout,
-    initialAuthCheckAndSetup
+    initialAuthCheckAndSetup,
+    cleanAuthError
 } from './auth'
 export {
     getAllProducts,

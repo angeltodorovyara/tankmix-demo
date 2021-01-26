@@ -3,18 +3,17 @@ import { MixResult, User } from '../../interfaces';
 import getUser from '../../utils/userFunction';
 import * as actionTypes from './actionTypes';
 import { adminStateCleanUp } from './admin';
-// import { getUserInformationSuccess } from './index'
 
 declare let window: any
 
-// loggin
 export const registerUser = (email: string, password: string) => {
     return (dispatch: any) => {
         const isAdmin: number = 0;
         const isDeactivated: number = 0;
-        dispatch(authStart())
+        dispatch(authStart());
+        email = email.trim().toLocaleLowerCase();
         window.db.transaction(function (tx: any) {
-            tx.executeSql('INSERT INTO users VALUES(?1, ?2, ?3)', [email, password, isAdmin], function (tx: any, rs: any) {
+            tx.executeSql('INSERT INTO users VALUES(?1, ?2, ?3, ?4)', [email, password, isAdmin, isDeactivated], function (tx: any, rs: any) {
                 localStorage.setItem('email', email)
                 localStorage.setItem('password', password)
                 dispatch(authSuccess({ email, password, isAdmin: Boolean(isAdmin), isDeactivated: Boolean(isDeactivated) }, []))
@@ -29,7 +28,7 @@ export const registerUser = (email: string, password: string) => {
 export const authenticate = (email: string, password: string) => {
     return (dispatch: any) => {
         dispatch(authStart())
-
+        email = email.trim().toLocaleLowerCase();
         window.db.transaction(function (tx: any) {
             tx.executeSql('SELECT * FROM users WHERE email = ?1 AND password = ?2 AND isDeactivated = ?3', [email, password, 0], function (tx: any, rs: any) {
                 if (rs.rows.length === 1) {
@@ -44,10 +43,9 @@ export const authenticate = (email: string, password: string) => {
                         })
                     })
                 } else {
-                    dispatch(logout())
+                    dispatch(authFailed("wrongEmailPassword"))
                 }
             }, function (tx: any, error: any) {
-                dispatch(authFailed(error.message))
                 console.log('SELECT error: ' + error.message)
             })
         })
@@ -77,7 +75,6 @@ export const initialAuthCheckAndSetup = () => {
                     dispatch(logout())
                 }
             }, function (tx: any, error: any) {
-                dispatch(authFailed(error.message))
                 console.log('SELECT error: ' + error.message)
             })
         })
@@ -133,5 +130,11 @@ export const logout = () => {
 const actionLogout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT
+    }
+}
+
+export const cleanAuthError = () => {
+    return {
+        type: actionTypes.AUTH_ERROR_CLEAN
     }
 }

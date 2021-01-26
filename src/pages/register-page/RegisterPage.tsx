@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import TextField from '../../components/text-field/TextField'
 import Button from '../../components/buttons/Button'
-import { registerUser } from '../../store/actions/index'
+import { cleanAuthError, registerUser } from '../../store/actions/index'
 import { RootState } from '../../store/types'
 import { InputValues } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
@@ -21,6 +21,13 @@ const RegisterPage: React.FC = (props) => {
     const [password, setPassword] = useState<InputValues>({ error: '', value: '' })
     const [rePassword, setRePassword] = useState<InputValues>({ error: '', value: '' })
 
+    useEffect(() => {
+
+        return () => {
+            dispatch(cleanAuthError())
+        }
+    }, [dispatch])
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         if (e.target.id === "email")
             setEmail(prevState => ({ ...prevState, value: e.target.value }))
@@ -31,8 +38,10 @@ const RegisterPage: React.FC = (props) => {
     }
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        if (e.target.id === "email")
-            setEmail(prevState => ({ ...prevState, error: emailValidator(email.value) }))
+        if (e.target.id === "email") {
+            const tempEmail = e.target.value.trim()
+            setEmail(prevState => ({ ...prevState, value: tempEmail, error: emailValidator(email.value) }))
+        }
         else if (e.target.id === "password")
             setPassword(prevState => ({ ...prevState, error: passwordValidator(password.value) }))
         else if (e.target.id === "rePassword")
@@ -41,7 +50,8 @@ const RegisterPage: React.FC = (props) => {
 
     const onSubmitHandler = (e: React.FormEvent) => {
         e.preventDefault()
-        if (email.value === '' || password.value === '' || rePassword.value === '') {
+        if (email.value === '' || password.value === '' || rePassword.value === '' ||
+            email.error !== '' || password.error !== '' || rePassword.error !== '') {
             return
         } else {
             dispatch(registerUser(email.value, password.value))

@@ -3,15 +3,13 @@ import * as actionTypes from './actionTypes';
 export const getLocationWeather = () => {
     return (dispatch: any) => {
         navigator.geolocation.getCurrentPosition((position: any) => {
-            const baseURL: string = 'https://dataservice.accuweather.com/locations/v1/cities/geoposition'
-            const apiKey: string = 'OlQZWfzAJd52tODy4jquHVS9GGIoC3Dy'
             const language: string = localStorage.getItem('i18nextLng') || 'en';
             const coordinates: string = `${position.coords.latitude},${position.coords.longitude}&language=${language}`;
-            fetch(`${baseURL}/search?apikey=${apiKey}&q=${coordinates}`)
+            fetch(`${process.env.REACT_APP_URL_LOCATION}?apikey=${process.env.REACT_APP_APIKEY}&q=${coordinates}`)
                 .then(res => res.json())
                 .then(res => {
                     const location: string = `${res.LocalizedName}, ${res.Country.LocalizedName}`;
-                    fetch(`https://dataservice.accuweather.com/currentconditions/v1/${res.Key}?apikey=${apiKey}&language=${language}`)
+                    fetch(`${process.env.REACT_APP_URL_CONDITIONS}/${res.Key}?apikey=${process.env.REACT_APP_APIKEY}&language=${language}`)
                         .then(res => res.json())
                         .then(res => {
                             const weather: string = `${res[0].WeatherText}&${res[0].Temperature.Metric.Value} C`;

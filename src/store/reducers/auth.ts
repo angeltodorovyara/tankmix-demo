@@ -1,5 +1,5 @@
 import { UserState } from '../types'
-import { AuthActionTypes, AUTH_FAILED, AUTH_LOGOUT, AUTH_START, AUTH_SUCCESS, ADD_RESULT_TO_USER_RESULTS } from '../actions/actionTypes'
+import { AuthActionTypes, AUTH_FAILED, AUTH_LOGOUT, AUTH_START, AUTH_SUCCESS, ADD_RESULT_TO_USER_RESULTS, AUTH_ERROR_CLEAN } from '../actions/actionTypes'
 
 const initialState: UserState = {
     data: null,
@@ -38,11 +38,11 @@ const reducer = (state = initialState, action: AuthActionTypes) => {
                 ...initialState,
                 isDone: true
             }
-        // case actionTypes.REMOVE_ERROR:
-        //     return {
-        //         ...state,
-        //         error: null
-        //     }
+        case AUTH_ERROR_CLEAN:
+            return {
+                ...state,
+                error: null
+            }
         default:
             return state
     }

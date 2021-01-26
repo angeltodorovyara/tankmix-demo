@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme: Theme) =>
             marginBottom: theme.spacing(1),
             backgroundColor: "#00205b",
             color: "white"
-        },
-    }),
+        }
+    })
 )
 
 interface ButtonProps {

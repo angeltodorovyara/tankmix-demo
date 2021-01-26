@@ -1,6 +1,5 @@
 const passwordValidator = (password: string): string => {
-    const regex = new RegExp(/[a-zA-Z0-9]+/);
-    password = password.trim();
+    const regex = new RegExp(/^[a-zA-Z0-9]+$/);
     if (password === '') {
         return 'validations.empty';
     } else if (password.length < 5) {

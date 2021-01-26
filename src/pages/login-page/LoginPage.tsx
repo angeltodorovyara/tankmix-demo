@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import TextField from '../../components/text-field/TextField'
 import Button from '../../components/buttons/Button'
 import LinkButton from '../../components/buttons/LinkButton'
 import ErrorMessage from '../../components/error-message/ErrorMessage'
-import { authenticate } from '../../store/actions'
+import { authenticate, cleanAuthError } from '../../store/actions'
 import { RootState } from '../../store/types'
 import { InputValues } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
@@ -20,6 +20,13 @@ const LoginPage: React.FC = (props) => {
     const [email, setEmail] = useState<InputValues>({ error: '', value: '' })
     const [password, setPassword] = useState<InputValues>({ error: '', value: '' })
 
+    useEffect(() => {
+
+        return () => {
+            dispatch(cleanAuthError())
+        }
+    }, [dispatch])
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         if (e.target.id === "email")
             setEmail(prevState => ({ ...prevState, value: e.target.value }))
@@ -28,16 +35,18 @@ const LoginPage: React.FC = (props) => {
     }
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        if (e.target.id === "email")
-            setEmail(prevState => ({ ...prevState, error: emailValidator(email.value) }))
-        else if (e.target.id === "password")
+        if (e.target.id === "email") {
+            setEmail(prevState => ({ ...prevState, error: emailValidator(e.target.value) }))
+        }
+        else if (e.target.id === "password") {
             setPassword(prevState => ({ ...prevState, error: passwordValidator(password.value) }))
+        }
     }
 
 
     const onSubmitHandler = (e: React.FormEvent) => {
         e.preventDefault()
-        if (email.value === '' || password.value === '') {
+        if (email.value === '' || password.value === '' || email.error !== '' || password.error !== '') {
             return
         } else {
             dispatch(authenticate(email.value, password.value))
