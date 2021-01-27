@@ -1,4 +1,4 @@
-import emptyFieldValidator from './emptyFieldValidator'
+import emptyFieldValidator from '../utils/validators/emptyFieldValidator'
 
 test('should the field be emptry', () => {
     expect(emptyFieldValidator('')).toBe('validations.empty');

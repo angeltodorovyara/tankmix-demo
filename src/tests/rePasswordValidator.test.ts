@@ -1,4 +1,4 @@
-import rePasswordValidator from './rePasswordValidator'
+import rePasswordValidator from '../utils/validators/rePasswordValidator'
 
 test('should the two passwords match', () => {
     expect(rePasswordValidator('Angel1994', 'Angel1994')).toBe('')

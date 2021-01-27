@@ -1,4 +1,4 @@
-import emailValidator from './emailValidator'
+import emailValidator from '../utils/validators/emailValidator'
 
 test('valid email', () => {
     expect(emailValidator("we1000@abv.bg")).toBe('');

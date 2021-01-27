@@ -1,4 +1,4 @@
-import passwordValidator from './passwordValidator'
+import passwordValidator from '../utils/validators/passwordValidator'
 
 test('valid password - cap, small, number', () => {
     expect(passwordValidator("Angel1994")).toBe('');
